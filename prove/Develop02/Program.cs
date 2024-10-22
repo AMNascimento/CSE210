@@ -1,4 +1,9 @@
-// creativity: Handle invalid ption in the menu selection. Handling unsaved work
+// Creativity: To exceed requirements I did the following
+// 1- Handling unsaved work. If a user tries to quit the program or load a file while
+// there is unsaved work, the program will wanr the user and ask with they would like
+// to save it.
+// 2- Handle invalid option in the menu selection. The program continues to ask for a
+// valid option until one is provided.
 
 using System;
 
