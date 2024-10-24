@@ -12,7 +12,7 @@ class Program
     static void Main(string[] args)
     {
         string menuOption;
-        Boolean saved = true;
+        bool saved = true;
 
         Journal journal = new Journal();
 
