@@ -10,21 +10,30 @@ public class Word
 
     public void Hide()
     {
-
+        _isHidden = true;
     }
 
     public void Show()
     {
-
+        _isHidden = false;
     }
 
     public bool IsHidden()
     {
-        return false;
+        return _isHidden;
     }
 
     public string GetDisplayText()
     {
-        return "";
+        if (_isHidden)
+        {
+            string hiddenWord = "";
+            foreach (char letter in _text)
+            {
+                hiddenWord += letter;
+            }
+            return hiddenWord;
+        }
+        return _text;
     }
 }
