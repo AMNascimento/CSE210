@@ -10,12 +10,16 @@ class Program
         Reference reference = new Reference("1 Nefi", 3, 7);
         Scripture scripture = new Scripture(reference, text);
 
-        while (userInput != "quit" & !scripture.IsCompletlyHidden())
+        while (userInput != "quit")
         {
             Console.Clear();
             Console.WriteLine(scripture.GetDisplayText());
-            Console.WriteLine("\nPress enter to continue or type 'quit' to finish:");
+            Console.WriteLine("\nPress enter to continue; type 'show' to unhide a word or type 'quit' to finish:");
             userInput = Console.ReadLine();
+            if (scripture.IsCompletlyHidden())
+            {
+                break;
+            }
             scripture.HideRandomWords(3);
         }
     }
