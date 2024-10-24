@@ -30,7 +30,7 @@ public class Word
             string hiddenWord = "";
             foreach (char letter in _text)
             {
-                hiddenWord += letter;
+                hiddenWord += "_";
             }
             return hiddenWord;
         }
