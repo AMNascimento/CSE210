@@ -20,7 +20,7 @@ public class Scripture
         
         for (int i = 0; i < numberToHide; i++)
         {
-            List<int> visibleWords = ListVisibleWords();
+            List<int> visibleWords = ListVisibleWordsPosition();
             Random random = new Random();
             int index = random.Next(visibleWords.Count);
             if (visibleWords.Count > 0)
@@ -58,18 +58,36 @@ public class Scripture
         return true;
     }
 
-    private List<int> ListVisibleWords()
+    private List<int> ListVisibleWordsPosition()
     {
-        List<int> visibleWords = new List<int>();
+        List<int> visibleWordsPosition = new List<int>();
         for (int i = 0; i < _words.Count; i++)
         {
             if (!_words[i].IsHidden())
             {
-                visibleWords.Add(i);
+                visibleWordsPosition.Add(i);
             }
         }
 
-        return visibleWords;
+        return visibleWordsPosition;
+    }
+
+    public void ShowWords(string whichWord)
+    {
+        int number;
+        if (whichWord == "all")
+        {
+            for (int i = 0; i < _words.Count; i++)
+            {
+                _words[i].Show();
+            }
+        }else if(Int32.TryParse(whichWord, out number))
+        {
+            if (number > 0 & number < _words.Count)
+            {
+                _words[number-1].Show();
+            }
+        }
     }
 
 

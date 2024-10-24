@@ -1,3 +1,7 @@
+// Creativity: To exceed requirements I did the following:
+// 1- Added the option for the user to unhide words in case they don't remember them.
+// The user can chose a word to show or they can chose to show all words.
+
 using System;
 
 class Program
@@ -15,12 +19,20 @@ class Program
             Console.Clear();
             Console.WriteLine(scripture.GetDisplayText());
             Console.WriteLine("\nPress enter to continue; type 'show' to unhide a word or type 'quit' to finish:");
-            userInput = Console.ReadLine();
-            if (scripture.IsCompletlyHidden())
+            userInput = Console.ReadLine().ToLower();
+            
+            if (userInput == "show")
             {
-                break;
+                Console.WriteLine("\nType the word position number; or type 'all' to show all words.");
+                scripture.ShowWords(Console.ReadLine().ToLower()); //Probably not best practice, but I'm short on time.
+            }else
+            {
+                if (scripture.IsCompletlyHidden())
+                {
+                    break;
+                }
+                scripture.HideRandomWords(3);
             }
-            scripture.HideRandomWords(3);
         }
     }
 }
