@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learning02", "prepare\Learn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learning05", "prepare\Learning05\Learning05.csproj", "{F361D979-53F4-4010-ABA8-635F47045B71}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "learning06", "prepare\learning06\learning06.csproj", "{42E0E23C-2BAB-4310-A775-7E30C43698A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learning06", "prepare\Learning06\Learning06.csproj", "{42E0E23C-2BAB-4310-A775-7E30C43698A2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learning03", "prepare\Learning03\Learning03.csproj", "{EB7DB472-CD2F-420F-B3CC-B720D7C5D135}"
 EndProject
