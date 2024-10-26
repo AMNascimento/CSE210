@@ -17,5 +17,6 @@ public class BreathingActivity  : Activity
             Console.Write("\n\nBreathe out...");
             ShowCountDown(7);
         }
+        Console.WriteLine();
     }
 }

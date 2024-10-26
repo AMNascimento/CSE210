@@ -34,6 +34,7 @@ public class ReflectingActivity : Activity
         ShowCountDown(5);
         Console.Clear();
         DisplayQuestions();
+        Console.WriteLine();
     }
 
     private string GetRandomPrompt()
