@@ -1,3 +1,7 @@
+// Creativity: To exceed requirements I did the following:
+// 1- For the Reflecting Activity, I Made sure no duplicate questions are selected until 
+// they have all been used at least once in that session.
+
 using System;
 using System.Diagnostics;
 

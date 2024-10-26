@@ -2,6 +2,7 @@ public class ReflectingActivity : Activity
 {
     private List<string> _prompts = new List<string>();
     private List<string>  _questions = new List<string>();
+    private List<int> _questionsAvailable = new List<int>();
 
     public ReflectingActivity() : base()
     {
@@ -28,7 +29,7 @@ public class ReflectingActivity : Activity
         Console.WriteLine("\nConsider the following prompt:");
         DisplayPrompt();
         Console.WriteLine("\nWhen you have something in mind, press any key to continue.");
-        Console.ReadKey();
+        Console.ReadLine();
         Console.WriteLine("\nNow ponder on each of the followig questions as they related to this experience.");
         Console.WriteLine("You may begin in: ");
         ShowCountDown(5);
@@ -46,9 +47,19 @@ public class ReflectingActivity : Activity
 
     private string GetRandomQuestion()
     {
+        if (_questionsAvailable.Count == 0)
+        {
+            for (int i = 0; i < _questions.Count; i++)
+            {
+                _questionsAvailable.Add(i);
+            }
+        }
+        
         Random random = new Random();
-        int index = random.Next(_questions.Count);
-        return _questions[index];
+        int index = random.Next(_questionsAvailable.Count);
+        int questionPosition = _questionsAvailable[index];
+        _questionsAvailable.RemoveAt(index);
+        return _questions[questionPosition];
     }
 
     private void DisplayPrompt()
@@ -62,7 +73,7 @@ public class ReflectingActivity : Activity
         while (DateTime.Now < endTime)
         {
             Console.Write($"\n> {GetRandomQuestion()}? ");
-            ShowSpinner(8);
+            ShowSpinner(2);
         }
     }
 }
