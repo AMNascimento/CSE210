@@ -4,11 +4,9 @@ public class Activity
     protected string _description;
     protected int _duration;
 
-    public Activity(string name, string description, int duration)
+    public Activity()
     {
-        _name = name;
-        _description = description;
-        _duration = duration;
+        _duration = 30;
     }
 
     public void DisplayStartingMessage()
@@ -27,7 +25,7 @@ public class Activity
     {
         Console.WriteLine("\nWell Done!");
         ShowSpinner(5);
-        Console.WriteLine($"You have completed another {_duration} seconds of the {_name}.");
+        Console.WriteLine($"\nYou have completed another {_duration} seconds of the {_name}.");
         ShowSpinner(5);
     }
 
