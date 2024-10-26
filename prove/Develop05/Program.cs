@@ -9,8 +9,6 @@ class Program
         
         while (option != "4")
         {
-            Activity activity = new Activity("test", "test", 5);
-            
             Console.Clear();
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Start breathing activity");
@@ -19,8 +17,26 @@ class Program
             Console.WriteLine("  4. Quit");
             Console.Write("Select a choice from the menu: ");
             option = Console.ReadLine();
-            activity.ShowCountDown(9);
             
+            if (option == "1")
+            {
+                BreathingActivity breathing = new BreathingActivity();
+                breathing.DisplayStartingMessage();
+                breathing.Run();
+                breathing.DisplayEndingMessage();
+            } else if (option == "2")
+            {
+                ReflectingActivity reflecting = new ReflectingActivity();
+                reflecting.DisplayStartingMessage();
+                reflecting.Run();
+                reflecting.DisplayEndingMessage();
+            } else if (option == "3")
+            {
+                ListingActivity listing = new ListingActivity();
+                listing.DisplayStartingMessage();
+                listing.Run();
+                listing.DisplayEndingMessage();
+            }
         }
     }
 }
