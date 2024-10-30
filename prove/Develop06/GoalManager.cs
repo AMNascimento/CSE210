@@ -77,6 +77,7 @@ public class GoalManager
         Console.WriteLine("  1. Simple Goal");
         Console.WriteLine("  2. Eternal Goal");
         Console.WriteLine("  3. Checklist Goal");
+        Console.WriteLine("  4. Bad Habit Goal");
         Console.Write("Which Goal would you like to create: ");
         string option = Console.ReadLine();
 
@@ -91,7 +92,7 @@ public class GoalManager
             
             SimpleGoal goal = new SimpleGoal(name, description, points);
             _goals.Add(goal);
-        } else if (option == "2")
+        }else if (option == "2")
         {
             Console.Write("What is the name of your goal?  ");
             string name = Console.ReadLine();
@@ -102,7 +103,7 @@ public class GoalManager
 
             EternalGoal goal = new EternalGoal(name, description, points);
             _goals.Add(goal);
-        } else if (option == "3")
+        }else if (option == "3")
         {
             Console.Write("What is the name of your goal?  ");
             string name = Console.ReadLine();
@@ -117,7 +118,18 @@ public class GoalManager
 
             ChecklistGoal goal = new ChecklistGoal(name, description, points, target, bonus);
             _goals.Add(goal);
-        } else
+        }else if (option == "4")
+        {
+            Console.Write("What is the name of your goal?  ");
+            string name = Console.ReadLine();
+            Console.Write("What is a short description of it?  ");
+            string description = Console.ReadLine();
+            Console.Write("What is the amount of points assotiated with this goal?  ");
+            int points = Int32.Parse(Console.ReadLine());
+
+            BadHabitGoal goal = new BadHabitGoal(name, description, points);
+            _goals.Add(goal);
+        }else
         {
             Console.WriteLine("\nInvalid Option!");
         }
@@ -133,7 +145,16 @@ public class GoalManager
         int pointsEarned = _goals[goalPosition].RecordEvent();
         _score += pointsEarned;
 
-        Console.WriteLine($"Congratulations! You have earned {pointsEarned} points!");
+        if (pointsEarned > 0)
+        {
+            Console.WriteLine($"Congratulations! You have earned {pointsEarned} points!");
+        }else if (pointsEarned < 0)
+        {
+            Console.WriteLine($"Sorry to hear that. You have lost {pointsEarned} points!");
+        }else
+        {
+            Console.WriteLine($"You earned no points. Try accomplishing another goal.");
+        }
         Console.WriteLine($"You now have {_score} points.");
     }
 
@@ -159,6 +180,8 @@ public class GoalManager
         
         string[] lines = System.IO.File.ReadAllLines(fileName);
         _score = Int32.Parse(lines[0]);
+
+        _goals.Clear();
 
         for (int i = 1; i < lines.Length; i++)
         {
@@ -191,6 +214,10 @@ public class GoalManager
             {
                 goal.CompleteOne();
             }
+            _goals.Add(goal);
+        } else if (goalType == "BadHabitGoal")
+        {
+            BadHabitGoal goal = new BadHabitGoal(goalData[0], goalData[1], Int32.Parse(goalData[2]));
             _goals.Add(goal);
         }
     }
